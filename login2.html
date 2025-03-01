@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+        .login-container, .forgot-password-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            display: none;
+        }
+        .login-container.active, .forgot-password-container.active {
+            display: block;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .forgot-password {
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+        .remember-me input {
+            width: auto;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container active" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <select id="userType" required>
+                <option value="" disabled selected>Select User Type</option>
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe"> <label for="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit">Login</button>
+            <a class="forgot-password" onclick="toggleForgotPassword()">Forgot Password?</a>
+        </form>
+    </div>
+    
+    <div class="forgot-password-container" id="forgotPasswordContainer">
+        <h2>Reset Password</h2>
+        <form id="resetForm">
+            <input type="email" id="resetEmail" placeholder="Enter your email" required>
+            <button type="submit">Reset Password</button>
+            <button type="button" onclick="toggleForgotPassword()">Back to Login</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const userType = document.getElementById("userType").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const rememberMe = document.getElementById("rememberMe").checked;
+
+            // Validate password (at least 1 uppercase, 1 lowercase, 1 number, 1 special character, min 8 chars)
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain at least 8 characters, including uppercase, lowercase, number, and special character.");
+                return;
+            }
+
+            // Store credentials in cookies if 'Remember Me' is checked
+            if (rememberMe) {
+                document.cookie = `username=${username}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+                document.cookie = `userType=${userType}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+            }
+
+            if (userType === "student") {
+                window.location.href = "student_dashboard.html";
+            } else if (userType === "admin") {
+                window.location.href = "admin_dashboard.html";
+            }
+        });
+        
+        function toggleForgotPassword() {
+            document.getElementById("loginContainer").classList.toggle("active");
+            document.getElementById("forgotPasswordContainer").classList.toggle("active");
+        }
+
+        // Autofill username from cookies
+        window.onload = function() {
+            const cookies = document.cookie.split("; ");
+            let userDetails = {};
+            cookies.forEach(cookie => {
+                let [key, value] = cookie.split("=");
+                userDetails[key] = value;
+            });
+            if (userDetails.username) {
+                document.getElementById("username").value = userDetails.username;
+                document.getElementById("userType").value = userDetails.userType;
+                document.getElementById("rememberMe").checked = true;
+            }
+        }
+    </script>
+</body>
+</html>

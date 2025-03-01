@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+            text-align: center;
+            padding: 20px;
+        }
+        .navbar {
+            background: #00796b;
+            padding: 15px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dashboard-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .accordion {
+            margin-top: 15px;
+            text-align: left;
+        }
+        .accordion-item {
+            background: #80cbc4;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #00796b;
+            color: white;
+            transition: background 0.3s ease;
+        }
+        .accordion-header:hover {
+            background: #004d40;
+        }
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background: #e0f2f1;
+            border-left: 4px solid #00796b;
+        }
+        .query-form {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: auto;
+        }
+        .query-form input, .query-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .query-form button {
+            width: 100%;
+            padding: 12px;
+            background: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .query-form button:hover {
+            background: #004d40;
+        }
+        .logout-btn {
+            background: #d32f2f;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">Student Dashboard</div>
+    <div class="dashboard-container">
+        <h2>Welcome, Student!</h2>
+        <p>Explore events, blogs, and your community activities.</p>
+        
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(0)">View Upcoming Events</div>
+                <div class="accordion-content">Here you can see all upcoming community events.</div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(1)">Read & Submit Blogs</div>
+                <div class="accordion-content">Read the latest blogs or submit your own content.</div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(2)">Connect with Community Members</div>
+                <div class="accordion-content">Find and connect with other community members.</div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(3)">Receive Notifications</div>
+                <div class="accordion-content">Check important announcements and notifications.</div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(4)">Contact Admin</div>
+                <div class="accordion-content">
+                    <form id="queryForm" class="query-form">
+                        <input type="text" id="studentName" placeholder="Your Name" required>
+                        <input type="email" id="studentEmail" placeholder="Your Email" required>
+                        <textarea id="studentQuery" placeholder="Write your query here..." rows="4" required></textarea>
+                        <button type="submit">Submit Query</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            sessionStorage.clear(); // Clear session storage for security
+            window.location.href = 'index.html';
+        }
+        
+        function toggleAccordion(index) {
+            let content = document.getElementsByClassName("accordion-content")[index];
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+        
+        // Disable back button after login
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function () {
+            window.history.pushState(null, null, window.location.href);
+        };
+    </script>
+</body>
+</html>
