@@ -1,210 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Community Club</title>
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Added Google Fonts -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- Added Google Fonts -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: white;
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
 
-        body {
-            font-family: 'Roboto', sans-serif; /* Changed font to Roboto */
-            background-color: #e0f7fa;
-            color: #444;
-            line-height: 1.5;
-        }
+      body {
+        font-family: "Roboto", sans-serif; /* Changed font to Roboto */
+        background-color: #2fbdcf;
+        color: #ffffff;
+        line-height: 1.5;
+      }
 
-        header {
-            background: linear-gradient(90deg, rgb(255, 255, 255), rgba(255, 0, 0, 0.6)); /* Gradient background */
-            color: #2bdb1b;
-            padding: 7px 5px;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+      header {
+        background: linear-gradient(
+          90deg,
+          #00796b,
+          #00796b
+        ); /* Gradient background */
+        color: #2bdb1b;
+        padding: 7px 5px;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 4px solid yellow;
+      }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
+      .navbar {
+        /* position: fixed; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+      }
 
-        .navbar .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #ffcc00;
-        }
+      .navbar .logo {
+        font-size: 22px;
+        font-weight: bold;
+        color: #ffffff;
+      }
 
-        .hamburger {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-            color: #fff;
-        }
+      .hamburger {
+        display: none;
+        font-size: 26px;
+        cursor: pointer;
+        color: #fff;
+      }
 
-        nav {
-            background-color: transparent; /* Keep the nav transparent */
-        }
+      nav {
+        background-color: transparent; /* Keep the nav transparent */
+      }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            padding: 10px; /* Padding for the nav */
-        }
+      nav ul {
+        display: flex;
+        list-style: none;
+        padding: 10px; /* Padding for the nav */
+      }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+      nav ul li {
+        margin: 0 15px;
+      }
 
-        nav ul li a, .join-btn {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-            font-size: 16px;
-            padding: 10px 15px; /* Padding for links */
-            border-radius: 20px; /* Rounded corners for links */
-            position: relative; /* For hover effect */
-        }
-        nav ul li a:hover, .join-btn:hover {
-            color: #ff0000;
-            transform: scale(1.1);
-        }
-        nav ul li a:hover::after {
-            width: 100%;
-            left: 0;
-        }
+      nav ul li a,
+      .join-btn {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        transition: color 0.3s ease, transform 0.3s ease,
+          background-color 0.3s ease;
+        font-size: 16px;
+        padding: 10px 15px; /* Padding for links */
+        border-radius: 20px; /* Rounded corners for links */
+        position: relative; /* For hover effect */
+      }
+      nav ul li a:hover,
+      .join-btn:hover {
+        color: black;
+        transform: scale(1.1);
+      }
+      nav ul li a:hover::after {
+        width: 100%;
+        left: 0;
+      }
 
-        .join-btn {
-            padding: 10px 20px;
-            background: linear-gradient(90deg, #ffcc00, #ff9900); /* Different gradient background */
-            border-radius: 50000px; /* Rounded corners */
-            transition: background 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-            font-size: 12px; /* Increased font size */
-            margin-left: 20px; /* Space between text and button */
-        }
+      .join-btn {
+        padding: 10px 20px;
+        background: linear-gradient(
+          90deg,
+          #ffcc00,
+          #ff9900
+        ); /* Different gradient background */
+        border-radius: 50000px; /* Rounded corners */
+        transition: background 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+        font-size: 12px; /* Increased font size */
+        margin-left: 20px; /* Space between text and button */
+      }
 
-        .join-btn:hover {
-            background: linear-gradient(90deg, #ff9900, #ffcc00); /* Reverse gradient on hover */
-            transform: scale(1.1);
-        }
+      .join-btn:hover {
+        background: linear-gradient(
+          90deg,
+          #ff9900,
+          #ffcc00
+        ); /* Reverse gradient on hover */
+        transform: scale(1.1);
+      }
 
-        /* Popup Form Styling */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
+      /* Popup Form Styling */
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+      }
 
-        .popup-form {
-            background-color: #fff;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
-            width: 90%;
-            max-width: 450px;
-            animation: slideIn 0.4s ease;
-            position: relative; /* For close button positioning */
-            border: 2px solid #00796b; /* Add border */
-        }
+      .popup-form {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+        width: 90%;
+        max-width: 450px;
+        animation: slideIn 0.4s ease;
+        position: relative; /* For close button positioning */
+        border: 2px solid #00796b; /* Add border */
+      }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
-
-        .popup-form form input, .popup-form form textarea, .popup-form form select, .popup-form form button {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        .popup-form form button {
-            background-color: #00796b;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+      .popup-form form input,
+      .popup-form form textarea,
+      .popup-form form select,
+      .popup-form form button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
 
-        .popup-form form button:hover {
-            background-color: #004d40;
-        }
+      .popup-form form button {
+        background-color: #00796b;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 22px;
-            cursor: pointer;
-            color: #00796b; /* Close button color */
-        }
+      .popup-form form button:hover {
+        background-color: #004d40;
+      }
 
-        section {
-            padding: 100px 20px;
-            text-align: center;
-            background: url('images/1.png') no-repeat center center/cover; /* Add background image */
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            color: #000000; /* Change text color for better contrast */
-        }
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        color: #00796b; /* Close button color */
+      }
 
-        .members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            justify-items: center;
-        }
+      section {
+        padding: 100px 20px;
+        text-align: center;
+        background: black no-repeat center center/cover; /* Add background image */
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        color: #000000; /* Change text color for better contrast */
+      }
 
-        .members img {
-            width: 200px;
-            height: 200px;
-            border-radius: 15px;
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Initial shadow */
-        }
+      #home {
+        margin-top: 5rem;
+      }
 
-        .members div:hover img {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
-        }
+      .members {
+        margin-top: 2rem;
+        /* background-color: red; */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        justify-items: center;
+      }
 
-        .blog-container {
+      .members img {
+        width: 200px;
+        height: 200px;
+        border-radius: 15px;
+        object-fit: cover;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Initial shadow */
+      }
+
+      .members div:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+      }
+
+      .blog-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
         padding: 20px;
-    }
+      }
 
-    .blog-card {
+      .blog-card {
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -212,228 +257,319 @@
         width: 300px;
         transition: transform 0.3s ease;
         text-align: center;
-    }
+      }
 
-    .blog-card:hover {
+      .blog-card:hover {
         transform: scale(1.05);
-    }
+      }
 
-    .blog-card h3 {
+      .blog-card h3 {
         margin-bottom: 10px;
         font-size: 1.2rem;
         color: #00796b;
-    }
+      }
 
-    .blog-card p {
+      .blog-card p {
         font-size: 0.9rem;
         color: #555;
-    }
+      }
 
-    .blog-card a {
+      .blog-card a {
         text-decoration: none;
         color: #00796b;
         font-weight: bold;
         display: inline-block;
         margin-top: 80px;
-    }
+      }
 
-        .social-media {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
+      .social-media {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+      }
+
+      .social-media a {
+        text-decoration: none;
+        margin-left: 15px;
+        color: #00796b; /* Icon color */
+        font-size: 24px; /* Icon size */
+        transition: color 0.3s ease;
+      }
+
+      #reach_ {
+        gap: 3rem;
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        /* background-color: rebeccapurple; */
+      }
+      #reach_Form {
+        /* background-color: rebeccapurple; */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        flex-direction: column;
+      }
+      #reach_Form input {
+        padding: 0.3px 1rem;
+        height: 5vh;
+        color: black;
+        width: 25%;
+        border-radius: 5px;
+      }
+      #reach_Form textarea {
+        padding: 0.3px 1rem;
+        border-radius: 10px;
+        min-height: 10vh;
+        width: 25%;
+      }
+      #reach_Form button {
+        border-radius: 8px;
+        color: black;
+        background-color: white;
+        padding: 0.5rem 1.3rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 25px;
+        background-color: #00796b; /* Change footer background color */
+        color: white;
+        border-top: 5px solid #ffcc00; /* Add a top border */
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
         }
-
-        .social-media a {
-            margin-left: 15px;
-            color: #00796b; /* Icon color */
-            font-size: 24px; /* Icon size */
-            transition: color 0.3s ease;
+        nav ul {
+          display: none;
+          flex-direction: column;
+          background-color: rgba(0, 0, 0, 0.9);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 100%;
+          padding: 20px;
         }
-
-        .social-media a:hover {
-            color: #004d40; /* Darker color on hover */
+        nav.active ul {
+          display: flex;
         }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background-color: #00796b; /* Change footer background color */
-            color: white;
-            border-top: 5px solid #ffcc00; /* Add a top border */
-        }
-
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            nav ul { display: none; flex-direction: column; background-color: rgba(0,0,0,0.9); position: absolute; top: 60px; right: 0; width: 100%; padding: 20px; }
-            nav.active ul { display: flex; }
-        }
-
-
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="navbar">
-            <div class="logo">Community Club</div>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#events" class="nav-link">Events</a></li>
-                    <li><a href="#blogs" class="nav-link">Blogs</a></li> <!-- Updated to static card format -->
-                    <li><a href="#about" class="nav-link">About Us</a></li> <!-- Changed from "Our Members" to "About Us" -->
-                    <li><a href="#reach_" class="nav-link">Reach Us</a></li>
-                    <li><a href="login2.html" class="nav-link">SIGN IN</a></li>
-                </ul>
-            </nav>  
-        </div>
+      <div class="navbar">
+        <div class="logo">Community Club</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav>
+          <ul>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#events" class="nav-link">Events</a></li>
+            <li><a href="#blogs" class="nav-link">Blogs</a></li>
+            <!-- Updated to static card format -->
+            <li><a href="#about" class="nav-link">About Us</a></li>
+            <!-- Changed from "Our Members" to "About Us" -->
+            <li><a href="#reach_" class="nav-link">Reach Us</a></li>
+            <li><a href="signup.html" class="nav-link">SIGNUP</a></li>
+            <li><a href="login2.html" class="nav-link">LOGIN</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <div id="popup-overlay" class="popup-overlay" onclick="if(event.target === this) togglePopup()">
-        <div class="popup-form">
-            <button class="close-btn" onclick="togglePopup()">&times;</button>
-            <h2>Join the Community</h2>
-            <form id="joinForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="tel" placeholder="Your Phone Number" required>
-                <select required>
-                    <option value="" disabled selected>Select Your Interest</option>
-                    <option value="development">Web Development</option>
-                    <option value="design">Design</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="content">Content Writing</option>
-                    <option value="management">Event Management</option>
-                </select>
-                <textarea placeholder="Why do you want to join?" rows="4" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+    <div
+      id="popup-overlay"
+      class="popup-overlay"
+      onclick="if(event.target === this) togglePopup()"
+    >
+      <div class="popup-form">
+        <button class="close-btn" onclick="togglePopup()">&times;</button>
+        <h2>Join the Community</h2>
+        <form id="joinForm">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <input type="tel" placeholder="Your Phone Number" required />
+          <select required>
+            <option value="" disabled selected>Select Your Interest</option>
+            <option value="development">Web Development</option>
+            <option value="design">Design</option>
+            <option value="marketing">Marketing</option>
+            <option value="content">Content Writing</option>
+            <option value="management">Event Management</option>
+          </select>
+          <textarea
+            placeholder="Why do you want to join?"
+            rows="4"
+            required
+          ></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
 
     <section id="home" data-aos="fade-up">
-        <h2>Welcome to Our Community Club</h2>
-        <div style="display: inline-block;">
+      <h2>Welcome to Our Community Club</h2>
+      <div style="display: inline-block">
         <div class="join-btn" onclick="togglePopup()">Join Us</div>
-        </div>
+      </div>
     </section>
 
     <section id="events" data-aos="fade-right">
-        <h2>Upcoming Events</h2>
-        <h3>Annual Tech Fair</h3>
-        <p>April 15th - Community Center</p>
-        <h3>Guest Speaker: Jane Doe</h3>
-        <p>April 20th - Main Hall</p>
+      <h2>Upcoming Events</h2>
+      <h3>Annual Tech Fair</h3>
+      <p>April 15th - Community Center</p>
+      <h3>Guest Speaker: Jane Doe</h3>
+      <p>April 20th - Main Hall</p>
     </section>
 
     <section id="blogs" data-aos="fade-left">
-        <h2>Latest Blogs</h2>
-        <div class="blog-container">
-            <div class="blog-card">
-                <h3>Blog Title 1</h3>
-                <p>Short description of the blog content.</p>
-                <a href="https://example.com/blog1" target="_blank">Read more</a>
-            </div>
-            <div class="blog-card">
-                <h3>Blog Title 2</h3>
-                <p>Short description of the blog content.</p>
-                <a href="https://example.com/blog2" target="_blank">Read more</a>
-            </div>
-            <div class="blog-card">
-                <h3>Blog Title 3</h3>
-                <p>Short description of the blog content.</p>
-                <a href="https://example.com/blog3" target="_blank">Read more</a>
-            </div>
+      <h2>Latest Blogs</h2>
+      <div class="blog-container">
+        <div class="blog-card">
+          <h3>Blog Title 1</h3>
+          <p>Short description of the blog content.</p>
+          <a href="https://example.com/blog1" target="_blank">Read more</a>
         </div>
+        <div class="blog-card">
+          <h3>Blog Title 2</h3>
+          <p>Short description of the blog content.</p>
+          <a href="https://example.com/blog2" target="_blank">Read more</a>
+        </div>
+        <div class="blog-card">
+          <h3>Blog Title 3</h3>
+          <p>Short description of the blog content.</p>
+          <a href="https://example.com/blog3" target="_blank">Read more</a>
+        </div>
+      </div>
     </section>
 
-    <section id="about" data-aos="zoom-in"> <!-- New About Us section -->
-        <h2>About Us</h2>
-        <p>We are a community dedicated to fostering innovation, collaboration, and personal growth. Join us to connect with like-minded individuals and participate in exciting events!</p>
+    <section id="about" data-aos="zoom-in">
+      <!-- New About Us section -->
+      <h2>About Us</h2>
+      <p>
+        We are a community dedicated to fostering innovation, collaboration, and
+        personal growth. Join us to connect with like-minded individuals and
+        participate in exciting events!
+      </p>
     </section>
-
 
     <section id="members" data-aos="zoom-in">
-        <h2>Our Members</h2>
-        <div class="members">
-            <div>
-                <a href="https://www.linkedin.com/in/devang-bavaskar-325567224/" target="_blank">
-                    <img src="images/3.jpg" alt="Member 1">
-                    <div class="member-name">Member 1</div>
-                </a>
-            </div>
-            <div>
-                <a href="https://www.linkedin.com/in/devang-bavaskar-325567224/" target="_blank">
-                    <img src="images/3.jpg" alt="Member 2">
-                    <div class="member-name">Member 2</div>
-                </a>
-            </div>
-            <div>
-                <a href="https://www.linkedin.com/in/devang-bavaskar-325567224/" target="_blank">
-                    <img src="images/3.jpg" alt="Member 3">
-                    <div class="member-name">Member 3</div>
-                </a>
-            </div>
-            <div>
-                <a href="https://www.linkedin.com/in/devang-bavaskar-325567224/" target="_blank">
-                    <img src="images/3.jpg" alt="Member 4">
-                    <div class="member-name">Member 4</div>
-                </a>
-            </div>
+      <h2>Our Members</h2>
+      <div class="members">
+        <div>
+          <a
+            href="https://www.linkedin.com/in/devang-bavaskar-325567224/"
+            target="_blank"
+          >
+            <img src="images/3.jpg" alt="Member 1" />
+            <div class="member-name">Member 1</div>
+          </a>
         </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/devang-bavaskar-325567224/"
+            target="_blank"
+          >
+            <img src="images/3.jpg" alt="Member 2" />
+            <div class="member-name">Member 2</div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/devang-bavaskar-325567224/"
+            target="_blank"
+          >
+            <img src="images/3.jpg" alt="Member 3" />
+            <div class="member-name">Member 3</div>
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/devang-bavaskar-325567224/"
+            target="_blank"
+          >
+            <img src="images/3.jpg" alt="Member 4" />
+            <div class="member-name">Member 4</div>
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="reach_" data-aos="fade-up">
-        <h2>Reach Us</h2>
-        <form id="reach_Form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="3" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <div class="social-media">
-            <a href="https://facebook.com" target="_blank">📘</a>
-            <a href="https://twitter.com" target="_blank">🐦</a>
-            <a href="https://instagram.com" target="_blank">📷</a>
-            <a href="https://linkedin.com" target="_blank">🔗</a>
-        </div>
+      <h2>Reach Us</h2>
+      <form id="reach_Form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="3" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div class="social-media">
+        <a href="https://facebook.com" target="_blank"
+          ><i class="ri-facebook-circle-fill"></i
+        ></a>
+        <a href="https://twitter.com" target="_blank"
+          ><i class="ri-twitter-fill"></i
+        ></a>
+        <a href="https://instagram.com" target="_blank"
+          ><i class="ri-instagram-fill"></i
+        ></a>
+        <a href="https://linkedin.com" target="_blank"
+          ><i class="ri-linkedin-box-fill"></i
+        ></a>
+      </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Community Club. All rights reserved. Designed by Your Name.</p>
+      <p>
+        &copy; 2025 Community Club. All rights reserved. Designed by Your Name.
+      </p>
     </footer>
 
     <script>
-        AOS.init();
+      AOS.init();
 
-        function togglePopup() {
-            const overlay = document.getElementById("popup-overlay");
-            overlay.style.display = overlay.style.display === "flex" ? "none" : "flex";
-            document.body.classList.toggle('popup-active', overlay.style.display === "flex"); // Prevent scrolling
-        }
+      function togglePopup() {
+        const overlay = document.getElementById("popup-overlay");
+        overlay.style.display =
+          overlay.style.display === "flex" ? "none" : "flex";
+        document.body.classList.toggle(
+          "popup-active",
+          overlay.style.display === "flex"
+        ); // Prevent scrolling
+      }
 
-        function toggleMenu() {
-            document.querySelector('nav').classList.toggle('active');
-        }
+      function toggleMenu() {
+        document.querySelector("nav").classList.toggle("active");
+      }
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", function () {
+          document
+            .querySelectorAll(".nav-link")
+            .forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+
+      document
+        .getElementById("joinForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for joining! We will reach out to you soon.");
+          togglePopup();
         });
 
-        document.getElementById("joinForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            alert("Thank you for joining! We will reach out to you soon.");
-            togglePopup();
-        });
-
-        document.getElementById("reach_Form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            alert("Your message has been sent! We will get back to you shortly.");
+      document
+        .getElementById("reach_Form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Your message has been sent! We will get back to you shortly.");
         });
     </script>
-</body>
+  </body>
 </html>
